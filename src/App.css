@@ -1,0 +1,70 @@
+.body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+  .app-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-size: cover;
+    background-position: center center;
+    flex-direction: column;
+    gap: 2em;
+  }
+  
+  .fortune-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    max-width: 80%;
+    margin: 0 auto;
+    
+  }
+  h1 {
+    text-align: center;
+    text-shadow: 0.15em 0.15em #1656634e;
+    position: relative;
+    font-size: 2em; 
+  }
+  button {
+    position: relative;
+    padding: 0.8em 1.2em;
+    margin-top: 20px;
+    border-radius: 5px;
+    border: 1px solid white;
+    opacity: 0.5;
+    transform: all 200ms ease;
+  }
+  button:hover {
+    background-color: transparent; 
+    transform:scale(1.05);
+    color: black; 
+  }
+  
+  button:active { 
+    box-shadow: none; 
+    transform: translateY(2px); 
+  }
+  
+  
+  
+
+
+  @media (max-width: 500px) {
+    .fortune {
+      font-size: 1rem;
+    }
+    button {
+        position: relative;
+        background-color: transparent;
+        margin-top: 20px;
+      }
+  }
+
+  

@@ -1,42 +1,50 @@
-import './App.css'
-import FortuneSelec from './components/FortuneSelec'
-import phrases from './utils/phrases'
-import { useState } from 'react'
-import fondo1 from './assets/fondo1.jpg'
-import fondo2 from './assets/fondo2.jpg'
-import fondo3 from './assets/fondo3.jpg'
-import fondo4 from './assets/fondo4.jpg'
+import React, { useState } from 'react';
+import './App.css';
 
+import Carga from './assets/carga.mp4';
+import Img1 from './assets/img1.jpg';
+import Perrito from './assets/perrito.jpg';
 function App() {
-  const [index, setIndex] = useState(0);
-  const changeIndex = () => {
-    if (index < phrases.length - 1) {
-      setIndex(index + 1)
-    } else {
-      setIndex(0)
-    }
-  }
+  const [loading, setLoading] = useState(false);
+  const [showBackground, setShowBackground] = useState(false);
+  document.body.style=`background-color:#f8de7e`;
+  const handleButtonClick = () => {
+    setLoading(true);
 
-  const imagenesFondo = [fondo1, fondo2, fondo3, fondo4];
-  const [indiceFondo, setIndiceFondo] = useState(0);
-
-  const cambiarFondo = () => {
-    let nuevoIndice = indiceFondo + 1;
-    if (nuevoIndice >= imagenesFondo.length) {
-      nuevoIndice = 0;
-    }
-    setIndiceFondo(nuevoIndice);
-  }
-  const style = {
-    backgroundImage: `url(${imagenesFondo[indiceFondo]})`
+    setTimeout(() => {
+      setLoading(false);
+      setShowBackground(true);
+    }, 14000); 
   };
+  
+  
   return (
-    <div className="app-container" style={style} onClick={() => changeIndex()}>
-      <h1>GALLETAS DE LA FORTUNA</h1>
-      <FortuneSelec data={phrases[index]} />
-      <button onClick={cambiarFondo}>ver otro</button>
+    <div className="App">
+      {showBackground ? (
+        <div className="background">
+          <img src={Img1} alt="" />
+          <div className="Perritocontainer"><img src={Perrito} alt="" /></div>
+          <h2>Toma mi princesita para la mas hermosa de todo el mundo </h2>
+          <h3>Te amo mucho <i class="em em-sparkling_heart" aria-role="presentation" aria-label="SPARKLING HEART"></i></h3>
+        </div>
+      ) : loading ? (
+        <div className="loading-screen">
+          <div className="video-container">
+            <video src={Carga} autoPlay loop></video>
+            <p>Entonces ahi voy esperame <i class="em em-heart_eyes" aria-role="presentation" aria-label="SMILING FACE WITH HEART-SHAPED EYES"></i> </p>
+           
+          </div>
+        </div>
+      ) : (
+        <div className="content">
+           
+          <h1>¿Estás lista mi amor?</h1>
+          <button onClick={handleButtonClick}>Sí</button>
+          
+        </div>
+      )}
     </div>
-  )
+  );
 }
 
 export default App;
